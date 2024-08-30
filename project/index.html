@@ -22,19 +22,20 @@
             border-radius: 10px;
             padding: 40px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-sizing: border-box;
         }
         .timeline-header {
             display: flex;
+            flex-direction: column;
             align-items: center;
             margin-bottom: 80px;
-            padding-left: 30%; 
         }
         .timeline-image {
             width: 150px;
             height: 150px;
             border-radius: 50%;
             overflow: hidden;
-            margin-right: 30px;
+            margin-bottom: 20px;
         }
         .timeline-image img {
             width: 100%;
@@ -45,6 +46,7 @@
             margin: 0 0 10px 0;
             font-size: 32px;
             font-weight: bold;
+            text-align: center;
         }
         .timeline-text p {
             margin: 0;
@@ -52,10 +54,12 @@
             font-size: 18px;
             line-height: 1.5;
             font-weight: 400; 
+            text-align: center;
         }
         .timeline {
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap;
+            justify-content: center;
             align-items: center;
             position: relative;
             padding: 35px 0 25px; 
@@ -78,6 +82,7 @@
             position: relative;
             z-index: 2;
             cursor: pointer;
+            margin: 0 5px;
         }
         .timeline-item.active {
             background-color: white;
@@ -100,6 +105,44 @@
         .fade-in {
             animation: fadeIn 0.5s ease-in-out;
         }
+        @media (max-width: 768px) {
+            .timeline-container {
+                padding: 20px;
+            }
+            .timeline-header {
+                margin-bottom: 40px;
+            }
+            .timeline-image {
+                width: 120px;
+                height: 120px;
+            }
+            .timeline-text h2 {
+                font-size: 24px;
+            }
+            .timeline-text p {
+                font-size: 16px;
+            }
+            .timeline-item::after {
+                bottom: 25px;
+                font-size: 12px;
+            }
+        }
+        @media (max-width: 480px) {
+            .timeline-item {
+                width: 18px;
+                height: 18px;
+            }
+            .timeline-item::after {
+                bottom: 20px;
+                font-size: 10px;
+            }
+            .timeline-text h2 {
+                font-size: 20px;
+            }
+            .timeline-text p {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -113,8 +156,6 @@
                 <p>We are one of India's leading drone<br>firms in providing end-to-end Drone<br>Solutions.</p>
             </div>
         </div>
-        <br />
-        <br />
         <div class="timeline">
             <div class="timeline-item active" data-year="April 2018"></div>
             <div class="timeline-item" data-year="April 2019"></div>
