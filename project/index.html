@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IG Drones Task</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .timeline-container {
+            width: 95%;
+            max-width: 1300px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .timeline-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 80px;
+            padding-left: 30%; 
+        }
+        .timeline-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 30px;
+        }
+        .timeline-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .timeline-text h2 {
+            margin: 0 0 10px 0;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .timeline-text p {
+            margin: 0;
+            color: #333;
+            font-size: 18px;
+            line-height: 1.5;
+            font-weight: 400; 
+        }
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            padding: 35px 0 25px; 
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background-color: #D3D3D3;
+            z-index: 1;
+        }
+        .timeline-item {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #D3D3D3;
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+        }
+        .timeline-item.active {
+            background-color: white;
+            border: 3px solid #007bff;
+        }
+        .timeline-item::after {
+            content: attr(data-year);
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 14px;
+            color: #666;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="timeline-container">
+        <div class="timeline-header">
+            <div class="timeline-image">
+                <img src="./T3iKa9KQdUNDHMriRu7G7i.jpg" alt="Timeline Image">
+            </div>
+            <div class="timeline-text">
+                <h2>April 2018</h2>
+                <p>We are one of India's leading drone<br>firms in providing end-to-end Drone<br>Solutions.</p>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="timeline">
+            <div class="timeline-item active" data-year="April 2018"></div>
+            <div class="timeline-item" data-year="April 2019"></div>
+            <div class="timeline-item" data-year="April 2020"></div>
+            <div class="timeline-item" data-year="April 2021"></div>
+            <div class="timeline-item" data-year="April 2022"></div>
+            <div class="timeline-item" data-year="April 2023"></div>
+            <div class="timeline-item" data-year="April 2024"></div>
+        </div>
+    </div>
+
+    <script>
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const timelineHeader = document.querySelector('.timeline-header');
+        const timelineTitle = timelineHeader.querySelector('h2');
+        const timelineDescription = timelineHeader.querySelector('p');
+
+        const timelineData = {
+            'April 2018': {
+                title: 'April 2018',
+                description: 'We are one of India\'s leading drone<br>firms in providing end-to-end Drone<br>Solutions.'
+            },
+            'April 2019': {
+                title: 'April 2019',
+                description: 'Our drone solutions expanded to cover<br>multiple industries including<br>agriculture and mining.'
+            },
+            'April 2020': {
+                title: 'April 2020',
+                description: 'We achieved significant milestones<br>in technological advancements.'
+            },
+            'April 2021': {
+                title: 'April 2021',
+                description: 'Introduction of AI-driven drone<br>solutions in the market.'
+            },
+            'April 2022': {
+                title: 'April 2022',
+                description: 'Partnership with global leaders<br>in the drone industry.'
+            },
+            'April 2023': {
+                title: 'April 2023',
+                description: 'Our technology is now implemented<br>across several sectors worldwide.'
+            },
+            'April 2024': {
+                title: 'April 2024',
+                description: 'Looking forward to pioneering<br>new drone technologies.'
+            }
+        };
+
+        timelineItems.forEach(item => {
+            item.addEventListener('click', () => {
+                timelineItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                
+                const year = item.getAttribute('data-year');
+                const data = timelineData[year];
+                
+                timelineTitle.textContent = data.title;
+                timelineDescription.innerHTML = data.description;
+
+                timelineHeader.classList.add('fade-in');
+                setTimeout(() => {
+                    timelineHeader.classList.remove('fade-in');
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
